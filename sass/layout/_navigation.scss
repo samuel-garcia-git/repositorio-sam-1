@@ -2,7 +2,7 @@
     &_checkbox {
         display: none;
     }
-    
+
     &_button {
         background-color: $color-white;
         height: 7rem;
@@ -15,10 +15,18 @@
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
         text-align: center;
         cursor: pointer;
-        
-        
+
+        @include respond(tab-port) {
+            top: 4rem;
+            right: 4rem;
+        }
+
+        @include respond(phone) {
+            top: 3.5rem;
+            right: 3.5rem;
+        }
     }
-    
+
     &_background {
         height: 6rem;
         width: 6rem;
@@ -29,26 +37,36 @@
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 999;
         transition: transform .8s cubic-bezier(.56, .3, .32, .52);
-        
+
+        @include respond(tab-port) {
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+
+        @include respond(phone) {
+            top: 3.5rem;
+            right: 3.5rem;
+        }
+
         //transform: scale(80); //
     }
-    
-    &_nav{ 
+
+    &_nav {
         height: 100vh;
         width: 100%;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 1000;
-        
+
         opacity: 0;
-        width:   0;
+        width: 0;
         transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        
-     
+
+
     }
-    
-    &_list{
+
+    &_list {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -57,60 +75,61 @@
         text-align: center;
         width: 100%;
     }
-    
+
     &_item {
         margin: 1rem;
     }
-    
+
     &_link {
+
         &:link,
         &:visited {
-        display: inline-block;
-        font-size: 3rem;
-        font-weight: 300;
-        padding: 1rem 2rem;
-        color: $color-white;
-        text-decoration: none;
-        text-transform: uppercase;
-        background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
-        background-size: 220%;
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-size: 220%;
             transition: all .4s;
-            
+
             span {
                 margin-right: 1.5rem;
-                display: inline-block; 
+                display: inline-block;
             }
-        
+
         }
-        
+
         &:hover,
         &:active {
             background-position: 100%;
             color: $color-primary;
             transform: translateX(1rem);
         }
-        
-        }
-    
+
+    }
+
     //navigation_icon
-    
+
     &_checkbox:checked ~ &_background {
         transform: scale(80);
     }
-    
-     &_checkbox:checked ~ &_nav {
-           opacity: 1;
-           width: 100%;
+
+    &_checkbox:checked ~ &_nav {
+        opacity: 1;
+        width: 100%;
     }
-    
+
     //navigation_icon
-    
+
     &_icon {
         position: relative;
         margin-top: 3.5rem;
         margin-left: 1.8rem;
-        
-        
+
+
         &,
         &::before,
         &::after {
@@ -118,9 +137,9 @@
             height: 2px;
             background-color: $color-gray-dark-3;
             display: inline-block;
-            
+
         }
-        
+
         &,
         &::before,
         &::after {
@@ -129,41 +148,41 @@
             left: 0;
             transition: all .2s;
         }
-        
-        &::before {                //gap between the hamburger lines
+
+        &::before {
+            //gap between the hamburger lines
             top: -.8rem;
         }
-        
+
         &::after {
             top: .8rem;
         }
     }
-    
+
     &_button:hover &_icon::before {
         top: -1rem;
     }
-    
-       &_button:hover &_icon::after {
+
+    &_button:hover &_icon::after {
         top: 1rem;
     }
-    
-    &_checkbox:checked + &_button &_icon { 
+
+    &_checkbox:checked + &_button &_icon {
         background-color: transparent;
-        
+
     }
-    
-       &_checkbox:checked + &_button &_icon::before { 
-            top: 0;
-            transform: rotate(135deg);
-        
+
+    &_checkbox:checked + &_button &_icon::before {
+        top: 0;
+        transform: rotate(135deg);
+
     }
-    
-       &_checkbox:checked + &_button &_icon::after { 
-           top: 0;
-           transform: rotate(-135deg);
+
+    &_checkbox:checked + &_button &_icon::after {
+        top: 0;
+        transform: rotate(-135deg);
     }
 }
 
 
-    /*&_checkbox:checked + &_button &_icon == When the checkbox is selected, then we select its brother, basically, which is called a button. Then, we select the button's child, which is the icon.*/
-
+/*&_checkbox:checked + &_button &_icon == When the checkbox is selected, then we select its brother, basically, which is called a button. Then, we select the button's child, which is the icon.*/
